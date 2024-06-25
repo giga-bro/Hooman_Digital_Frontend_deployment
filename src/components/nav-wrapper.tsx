@@ -1,19 +1,12 @@
 import {
-  AlertCircle,
-  ArchiveX,
   ArrowUpRight,
-  File,
-  Inbox,
   LandPlot,
   MessageCircle,
   NotepadText,
-  PanelLeft,
   Search,
   Send,
   Settings,
-  Trash2,
   Users,
-  Users2,
 } from "lucide-react";
 import * as React from "react";
 
