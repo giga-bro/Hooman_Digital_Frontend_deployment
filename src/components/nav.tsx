@@ -23,7 +23,7 @@ export function Nav({ links, isCollapsed, title }: NavProps) {
   return (
     <div
       data-collapsed={isCollapsed}
-      className="group flex flex-col gap-4 px-4 py-4 data-[collapsed=true]:py-2 data-[collapsed=true]:px-3"
+      className="group flex flex-col gap-4 px-4 py-5 data-[collapsed=true]:py-2 data-[collapsed=true]:px-3"
     >
       {!isCollapsed && (
         <h1 className="text-[10px] uppercase tracking-widest text-gray-400">
@@ -63,12 +63,13 @@ export function Nav({ links, isCollapsed, title }: NavProps) {
               href="#"
               className={cn(
                 buttonVariants({ variant: link.variant, size: "sm" }),
-                link.variant === "default" &&
-                  "bg-[#FFF6F0] text-primary font-medium",
-                "justify-start"
+                link.variant === "default"
+                  ? "bg-[#FFF6F0] text-primary font-medium"
+                  : "text-zinc-500",
+                "justify-start "
               )}
             >
-              <link.icon className="mr-2 h-4 w-4" />
+              <link.icon className="mr-2 h-4 w-4 " />
               {link.title}
               {link.label && (
                 <span

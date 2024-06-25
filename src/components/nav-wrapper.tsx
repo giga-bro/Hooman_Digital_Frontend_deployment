@@ -1,10 +1,18 @@
 import {
   AlertCircle,
   ArchiveX,
+  ArrowUpRight,
   File,
   Inbox,
+  LandPlot,
+  MessageCircle,
+  NotepadText,
+  PanelLeft,
+  Search,
   Send,
+  Settings,
   Trash2,
+  Users,
   Users2,
 } from "lucide-react";
 import * as React from "react";
@@ -53,6 +61,8 @@ export function SideBar({
       <ResizablePanelGroup
         direction="horizontal"
         onLayout={(sizes: number[]) => {
+          console.log(sizes);
+
           document.cookie = `react-resizable-panels:layout=${JSON.stringify(
             sizes
           )}`;
@@ -64,7 +74,7 @@ export function SideBar({
           collapsedSize={navCollapsedSize}
           collapsible={true}
           minSize={windowWidth > 1600 ? 14 : 18}
-          maxSize={windowWidth > 1600 ? 14 : 22}
+          maxSize={windowWidth > 1600 ? 14 : 21}
           onCollapse={() => {
             setIsCollapsed(true);
           }}
@@ -79,7 +89,7 @@ export function SideBar({
         >
           <div
             className={cn(
-              "flex  py-4 items-center  ",
+              "flex  py-4 items-center top-0 sticky bg-white border-b",
               isCollapsed ? "px-3  justify-center" : "px-4 "
             )}
           >
@@ -92,7 +102,6 @@ export function SideBar({
               <PanelLeft />
             </button> */}
           </div>
-          <Separator />
           <Nav
             title="Analytics"
             isCollapsed={isCollapsed}
@@ -100,31 +109,30 @@ export function SideBar({
               {
                 title: "All Information",
 
-                icon: Inbox,
+                icon: LandPlot,
                 variant: "default",
               },
               {
-                title: "Drafts",
-                label: "9",
-                icon: File,
-                variant: "ghost",
-              },
-              {
-                title: "Sent",
-                label: "",
+                title: "Discord",
+
                 icon: Send,
                 variant: "ghost",
               },
               {
-                title: "Junk",
-                label: "23",
-                icon: ArchiveX,
+                title: "Telegram",
+                icon: Send,
                 variant: "ghost",
               },
               {
-                title: "Trash",
-                label: "",
-                icon: Trash2,
+                title: "Twitter",
+
+                icon: Send,
+                variant: "ghost",
+              },
+              {
+                title: "Forum",
+
+                icon: Users,
                 variant: "ghost",
               },
             ]}
@@ -135,40 +143,63 @@ export function SideBar({
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Social",
-                label: "972",
-                icon: Users2,
+                title: "DAOi Chat",
+
+                icon: MessageCircle,
                 variant: "ghost",
               },
               {
-                title: "Updates",
-                label: "342",
-                icon: AlertCircle,
+                title: "Docs",
+
+                icon: NotepadText,
                 variant: "ghost",
               },
             ]}
-          />
+          />{" "}
+          <Separator />
           <Nav
-            title="ai-features"
+            title="More"
             isCollapsed={isCollapsed}
             links={[
               {
-                title: "Social",
-                label: "972",
-                icon: Users2,
+                title: "Website",
+
+                icon: ArrowUpRight,
                 variant: "ghost",
               },
               {
-                title: "Updates",
-                label: "342",
-                icon: AlertCircle,
+                title: "Settings",
+
+                icon: Settings,
                 variant: "ghost",
               },
             ]}
           />
         </ResizablePanel>
         <ResizableHandle withHandle />
-        <ResizablePanel defaultSize={500} minSize={30}>
+        <ResizablePanel
+          defaultSize={500}
+          minSize={30}
+          className="bg-gray-100 px-8 py-5 !overflow-y-auto"
+        >
+          <div className="flex justify-between items-center">
+            <div className="rounded-xl bg-white px-5 py-2 flex gap-4 items-center w-[20rem]">
+              <Search className="text-zinc-400 size-5" />
+              <input
+                type="text"
+                placeholder="Search"
+                className="bg-transparent focus:outline-none flex-1"
+              />
+            </div>
+            <div className="flex items-center gap-5">
+              <h1 className="text-lg  text-zinc-500">John Doe</h1>
+              <img
+                src="https://avatars.githubusercontent.com/u/7221389?v=4"
+                alt="avatar"
+                className="size-10 rounded-full"
+              />
+            </div>
+          </div>
           {children}
         </ResizablePanel>
       </ResizablePanelGroup>

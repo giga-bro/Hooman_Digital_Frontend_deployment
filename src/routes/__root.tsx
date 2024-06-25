@@ -17,7 +17,7 @@ export const Route = createRootRoute({
       <SideBar navCollapsedSize={4}>
         <Outlet />
       </SideBar>
-      <TanStackRouterDevtools />
+      <TanStackRouterDevtools position="bottom-right" />
     </>
   ),
 });
