@@ -1,19 +1,13 @@
-import * as React from "react";
 import {
   AlertCircle,
-  Archive,
   ArchiveX,
-  CarFront,
   File,
   Inbox,
-  MessagesSquare,
-  PanelLeft,
-  Search,
   Send,
-  ShoppingCart,
   Trash2,
   Users2,
 } from "lucide-react";
+import * as React from "react";
 
 import { cn } from "../lib/utils";
 

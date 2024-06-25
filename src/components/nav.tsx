@@ -1,12 +1,12 @@
+import { Link } from "@tanstack/react-router";
 import { LucideIcon } from "lucide-react";
-import { createRootRoute, Link, Outlet } from "@tanstack/react-router";
-import { cn } from "../lib/utils";
 import { buttonVariants } from "../components/ui/button";
 import {
   Tooltip,
   TooltipContent,
   TooltipTrigger,
 } from "../components/ui/tooltip";
+import { cn } from "../lib/utils";
 
 interface NavProps {
   isCollapsed: boolean;
