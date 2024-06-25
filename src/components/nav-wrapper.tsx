@@ -66,8 +66,8 @@ export function SideBar({
           defaultSize={225}
           collapsedSize={navCollapsedSize}
           collapsible={true}
-          minSize={windowWidth > 1600 ? 14 : 18}
-          maxSize={windowWidth > 1600 ? 14 : 21}
+          minSize={windowWidth > 1600 ? 12 : windowWidth > 1260 ? 19 : 22}
+          maxSize={windowWidth > 1600 ? 14 : windowWidth > 1260 ? 21 : 24}
           onCollapse={() => {
             setIsCollapsed(true);
           }}
@@ -77,7 +77,7 @@ export function SideBar({
           className={cn(
             isCollapsed &&
               "min-w-[50px] transition-all  duration-300 ease-in-out",
-            "!overflow-y-auto h-[100dvh]"
+            "!overflow-y-auto custom-scrollbar h-[100dvh]"
           )}
         >
           <div
