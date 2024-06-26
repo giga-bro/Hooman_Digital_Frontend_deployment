@@ -43,6 +43,7 @@ export default function DashboardPage() {
                         .fill(0)
                         .map((_, index) => (
                           <img
+                            key={index}
                             src={`https://picsum.photos/id/${
                               index + 30
                             }/200/200`}
