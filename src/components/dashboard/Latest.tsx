@@ -6,7 +6,7 @@ const Latest = () => {
   return (
     <section className="flex flex-col gap-6 bg-background rounded-xl p-5">
       <h1 className="text-xl font-bold">Latest</h1>
-      <ul className="grid grid-cols-2 gap-10 ">
+      <ul className="grid md:grid-cols-2 gap-10 ">
         <li className="flex flex-col gap-3 bg-zinc-100 dark:bg-zinc-900 p-5  rounded-md text-sm">
           <h1 className="">Recent Proposals</h1>
           <div className="rounded overflow-hidden divide-y">
