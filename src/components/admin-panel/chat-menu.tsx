@@ -130,7 +130,10 @@ export function ChatMenu({ isOpen }: MenuProps) {
                   </h1>
                   <div className="flex flex-col gap-4 pl-2">
                     {new Array(2).fill(0).map((_, index) => (
-                      <div className="flex gap-4 text-muted-foreground">
+                      <div
+                        className="flex gap-4 text-muted-foreground"
+                        key={index}
+                      >
                         <p className="text-xs flex-1  line-clamp-1">
                           Chatbot definition and examples of how to use it
                         </p>
@@ -148,7 +151,10 @@ export function ChatMenu({ isOpen }: MenuProps) {
                   </h1>
                   <div className="flex flex-col gap-4 pl-2">
                     {new Array(4).fill(0).map((_, index) => (
-                      <div className="flex gap-4 text-muted-foreground">
+                      <div
+                        className="flex gap-4 text-muted-foreground"
+                        key={index}
+                      >
                         <p className="text-xs flex-1  line-clamp-1">
                           Chatbot definition and examples of how to use it
                         </p>
