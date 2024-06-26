@@ -1,11 +1,13 @@
 import {
-  Tag,
-  Users,
+  ArrowUpRight,
+  LayoutGrid,
+  MessageCircle,
+  NotepadText,
   Settings,
-  Bookmark,
-  SquarePen,
-  LayoutGrid
+  TwitterIcon,
+  Users,
 } from "lucide-react";
+import { icons } from "./icons";
 
 type Submenu = {
   href: string;
@@ -19,6 +21,7 @@ type Menu = {
   active: boolean;
   icon: any;
   submenus: Submenu[];
+  svg?: any;
 };
 
 type Group = {
@@ -29,72 +32,104 @@ type Group = {
 export function getMenuList(pathname: string): Group[] {
   return [
     {
-      groupLabel: "",
+      groupLabel: "Analytics",
       menus: [
         {
           href: "/dashboard",
-          label: "Dashboard",
+          label: "All Information",
           active: pathname.includes("/dashboard"),
           icon: LayoutGrid,
-          submenus: []
-        }
-      ]
-    },
-    {
-      groupLabel: "Contents",
-      menus: [
-        {
-          href: "",
-          label: "Posts",
-          active: pathname.includes("/posts"),
-          icon: SquarePen,
-          submenus: [
-            {
-              href: "/posts",
-              label: "All Posts",
-              active: pathname === "/posts"
-            },
-            {
-              href: "/posts/new",
-              label: "New Post",
-              active: pathname === "/posts/new"
-            }
-          ]
+          submenus: [],
         },
         {
+          href: "/dashboard",
+          label: "Discord",
+          active: pathname.includes("/dashboardsdfsdfsdf"),
+          icon: LayoutGrid,
+          submenus: [],
+          svg: icons.discord,
+        },
+        {
+          href: "/dashboard",
+          label: "Telegram",
+          active: pathname.includes("/dashboardsdfsdf"),
+          icon: LayoutGrid,
+          submenus: [],
+          svg: icons.telegram,
+        },
+        {
+          href: "/dashboard",
+          label: "Twitter",
+          active: pathname.includes("/dashboardsdfsdf"),
+          icon: TwitterIcon,
+          svg: icons.x,
+          submenus: [],
+        },
+        {
+          href: "/dashboard",
+          label: "Forum",
+          active: pathname.includes("/dashboardsdf"),
+          icon: Users,
+          submenus: [],
+        },
+      ],
+    },
+    {
+      groupLabel: "Ai Features",
+      menus: [
+        {
           href: "/categories",
-          label: "Categories",
+          label: "DAOi Chat",
           active: pathname.includes("/categories"),
-          icon: Bookmark,
-          submenus: []
+          icon: MessageCircle,
+          submenus: [],
         },
         {
           href: "/tags",
-          label: "Tags",
+          label: "Docs",
           active: pathname.includes("/tags"),
-          icon: Tag,
-          submenus: []
-        }
-      ]
+          icon: NotepadText,
+          submenus: [],
+        },
+      ],
     },
     {
-      groupLabel: "Settings",
+      groupLabel: "More",
       menus: [
         {
           href: "/users",
-          label: "Users",
+          label: "Website",
           active: pathname.includes("/users"),
-          icon: Users,
-          submenus: []
+          icon: ArrowUpRight,
+          submenus: [],
         },
         {
           href: "/account",
-          label: "Account",
+          label: "Settings",
           active: pathname.includes("/account"),
           icon: Settings,
-          submenus: []
-        }
-      ]
-    }
+          submenus: [],
+        },
+      ],
+    },
   ];
 }
+
+// {
+//   href: "",
+//   label: "Posts",
+//   active: pathname.includes("/posts"),
+//   icon: SquarePen,
+//   submenus: [
+//     {
+//       href: "/posts",
+//       label: "All Posts",
+//       active: pathname === "/posts"
+//     },
+//     {
+//       href: "/posts/new",
+//       label: "New Post",
+//       active: pathname === "/posts/new"
+//     }
+//   ]
+// },

@@ -1,20 +1,20 @@
 "use client";
 
+import { Ellipsis } from "lucide-react";
 import Link from "next/link";
-import { Ellipsis, LogOut } from "lucide-react";
 import { usePathname } from "next/navigation";
 
-import { cn } from "@/lib/utils";
-import { getMenuList } from "@/lib/menu-list";
+import { CollapseMenuButton } from "@/components/admin-panel/collapse-menu-button";
 import { Button } from "@/components/ui/button";
 import { ScrollArea } from "@/components/ui/scroll-area";
-import { CollapseMenuButton } from "@/components/admin-panel/collapse-menu-button";
 import {
   Tooltip,
-  TooltipTrigger,
   TooltipContent,
-  TooltipProvider
+  TooltipProvider,
+  TooltipTrigger,
 } from "@/components/ui/tooltip";
+import { getMenuList } from "@/lib/menu-list";
+import { cn } from "@/lib/utils";
 
 interface MenuProps {
   isOpen: boolean | undefined;
@@ -31,7 +31,7 @@ export function Menu({ isOpen }: MenuProps) {
           {menuList.map(({ groupLabel, menus }, index) => (
             <li className={cn("w-full", groupLabel ? "pt-5" : "")} key={index}>
               {(isOpen && groupLabel) || isOpen === undefined ? (
-                <p className="text-sm font-medium text-muted-foreground px-4 pb-2 max-w-[248px] truncate">
+                <p className="text-xs tracking-wide uppercase  text-muted-foreground px-4 pb-2 max-w-[248px] truncate">
                   {groupLabel}
                 </p>
               ) : !isOpen && isOpen !== undefined && groupLabel ? (
@@ -51,7 +51,7 @@ export function Menu({ isOpen }: MenuProps) {
                 <p className="pb-2"></p>
               )}
               {menus.map(
-                ({ href, label, icon: Icon, active, submenus }, index) =>
+                ({ href, label, icon: Icon, active, submenus, svg }, index) =>
                   submenus.length === 0 ? (
                     <div className="w-full" key={index}>
                       <TooltipProvider disableHoverableContent>
@@ -59,14 +59,17 @@ export function Menu({ isOpen }: MenuProps) {
                           <TooltipTrigger asChild>
                             <Button
                               variant={active ? "secondary" : "ghost"}
-                              className="w-full justify-start h-10 mb-1"
+                              className={cn(
+                                "w-full justify-start h-10 mb-1",
+                                isOpen === false ? "px-3" : ""
+                              )}
                               asChild
                             >
                               <Link href={href}>
                                 <span
                                   className={cn(isOpen === false ? "" : "mr-4")}
                                 >
-                                  <Icon size={18} />
+                                  {svg ? svg : <Icon size={18} />}
                                 </span>
                                 <p
                                   className={cn(
@@ -103,14 +106,14 @@ export function Menu({ isOpen }: MenuProps) {
               )}
             </li>
           ))}
-          <li className="w-full grow flex items-end">
+          {/* <li className="w-full grow flex items-end">
             <TooltipProvider disableHoverableContent>
               <Tooltip delayDuration={100}>
                 <TooltipTrigger asChild>
                   <Button
                     onClick={() => {}}
                     variant="outline"
-                    className="w-full justify-center h-10 mt-5"
+                    className="w-full justify-between h-10 mt-5"
                   >
                     <span className={cn(isOpen === false ? "" : "mr-4")}>
                       <LogOut size={18} />
@@ -130,7 +133,7 @@ export function Menu({ isOpen }: MenuProps) {
                 )}
               </Tooltip>
             </TooltipProvider>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </ScrollArea>
