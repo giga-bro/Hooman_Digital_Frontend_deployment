@@ -5,7 +5,7 @@ import {
   NotepadText,
   Settings,
   TwitterIcon,
-  Users,
+  Users
 } from "lucide-react";
 import { icons } from "./icons";
 
@@ -39,7 +39,7 @@ export function getMenuList(pathname: string): Group[] {
           label: "All Information",
           active: pathname.includes("/dashboard"),
           icon: LayoutGrid,
-          submenus: [],
+          submenus: []
         },
         {
           href: "/dashboard",
@@ -47,7 +47,7 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname.includes("/dashboardsdfsdfsdf"),
           icon: LayoutGrid,
           submenus: [],
-          svg: icons.discord,
+          svg: icons.discord
         },
         {
           href: "/dashboard",
@@ -55,7 +55,7 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname.includes("/dashboardsdfsdf"),
           icon: LayoutGrid,
           submenus: [],
-          svg: icons.telegram,
+          svg: icons.telegram
         },
         {
           href: "/dashboard",
@@ -63,35 +63,35 @@ export function getMenuList(pathname: string): Group[] {
           active: pathname.includes("/dashboardsdfsdf"),
           icon: TwitterIcon,
           svg: icons.x,
-          submenus: [],
+          submenus: []
         },
         {
           href: "/dashboard",
           label: "Forum",
           active: pathname.includes("/dashboardsdf"),
           icon: Users,
-          submenus: [],
-        },
-      ],
+          submenus: []
+        }
+      ]
     },
     {
       groupLabel: "Ai Features",
       menus: [
         {
-          href: "/categories",
+          href: "/chat",
           label: "DAOi Chat",
-          active: pathname.includes("/categories"),
+          active: pathname.includes("/chat"),
           icon: MessageCircle,
-          submenus: [],
+          submenus: []
         },
         {
           href: "/tags",
           label: "Docs",
           active: pathname.includes("/tags"),
           icon: NotepadText,
-          submenus: [],
-        },
-      ],
+          submenus: []
+        }
+      ]
     },
     {
       groupLabel: "More",
@@ -101,17 +101,17 @@ export function getMenuList(pathname: string): Group[] {
           label: "Website",
           active: pathname.includes("/users"),
           icon: ArrowUpRight,
-          submenus: [],
+          submenus: []
         },
         {
           href: "/account",
           label: "Settings",
           active: pathname.includes("/account"),
           icon: Settings,
-          submenus: [],
-        },
-      ],
-    },
+          submenus: []
+        }
+      ]
+    }
   ];
 }
 

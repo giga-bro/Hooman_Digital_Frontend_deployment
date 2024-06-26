@@ -7,10 +7,12 @@ import { useSidebarToggle } from "@/hooks/use-sidebar-toggle";
 import { useStore } from "@/hooks/use-store";
 import { cn } from "@/lib/utils";
 import Image from "next/image";
+import { usePathname } from "next/navigation";
+import { ChatMenu } from "./chat-menu";
 
 export function Sidebar() {
   const sidebar = useStore(useSidebarToggle, (state) => state);
-
+  const pathname = usePathname();
   if (!sidebar) return null;
 
   return (
@@ -52,7 +54,11 @@ export function Sidebar() {
             />
           </Link>
         </Button>
-        <Menu isOpen={sidebar?.isOpen} />
+        {pathname.includes("chat") ? (
+          <ChatMenu isOpen={sidebar?.isOpen} />
+        ) : (
+          <Menu isOpen={sidebar?.isOpen} />
+        )}
       </div>
     </aside>
   );
