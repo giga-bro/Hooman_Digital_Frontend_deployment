@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 
 import { ThemeProvider } from "@/providers/theme-provider";
+import QueryProvider from "@/providers/query-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
@@ -17,25 +18,25 @@ export const metadata: Metadata = {
   description:
     "DAOi is the first decentralized autonomous organization (DAO) dedicated to the development of the Internet Computer ecosystem.",
   alternates: {
-    canonical: "/",
+    canonical: "/"
   },
   openGraph: {
     url: "/",
     title: "DAOi",
     description:
       "DAOi is the first decentralized autonomous organization (DAO) dedicated to the development of the Internet Computer ecosystem.",
-    type: "website",
+    type: "website"
   },
   twitter: {
     card: "summary_large_image",
     title: "DAOi",
     description:
-      "DAOi is the first decentralized autonomous organization (DAO) dedicated to the development of the Internet Computer ecosystem.",
-  },
+      "DAOi is the first decentralized autonomous organization (DAO) dedicated to the development of the Internet Computer ecosystem."
+  }
 };
 
 export default function RootLayout({
-  children,
+  children
 }: Readonly<{
   children: React.ReactNode;
 }>) {
@@ -43,7 +44,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body className={inter.className}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem>
-          {children}
+          <QueryProvider>{children}</QueryProvider>
         </ThemeProvider>
       </body>
     </html>
