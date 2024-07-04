@@ -20,6 +20,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/"
   },
+
   openGraph: {
     url: "/",
     title: "DAOi",
