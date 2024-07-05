@@ -1,19 +1,24 @@
 "use client";
 import { ContentLayout } from "@/components/admin-panel/content-layout";
 import PrefilledPrompts from "@/components/prefilled-chat-message";
+import { useChat } from "@/hooks/use-chat";
 import { BASE_URL } from "@/services/api";
 import clsx from "clsx";
 import { ArrowUp, Loader2 } from "lucide-react";
 import React, { useState } from "react";
 
 const Chat = () => {
-  const [messages, setMessages] = useState<
-    {
-      conversation_id: string;
-      message: string;
-      by: string;
-    }[]
-  >([]);
+  // const [messages, setMessages] = useState<
+  //   {
+  //     conversation_id: string;
+  //     message: string;
+  //     by: string;
+  //   }[]
+  // >([]);
+
+  const messages = useChat((state) => state.messages);
+  const setMessages = useChat((state) => state.addMessage);
+
   const [message, setMessage] = useState("");
   const [loading, setLoading] = useState(false);
   const [answer, setAnswer] = useState("");
@@ -29,14 +34,11 @@ const Chat = () => {
       conversation_id: Math.random().toString(36).substring(7),
       message: prefilledMessage ?? message
     };
-    setMessages((prev) => [
-      ...prev,
-      {
-        conversation_id: data.conversation_id,
-        message: prefilledMessage ?? message,
-        by: "user"
-      }
-    ]);
+    setMessages({
+      conversation_id: data.conversation_id,
+      message: prefilledMessage ?? message,
+      by: "user"
+    });
     try {
       setLoading(true);
       setAnswer("");
@@ -75,15 +77,11 @@ const Chat = () => {
           " ";
         setAnswer(currenAnswer);
       }
-      setMessages((prev) => [
-        ...prev,
-
-        {
-          conversation_id: data.conversation_id,
-          message: currenAnswer,
-          by: "ai"
-        }
-      ]);
+      setMessages({
+        conversation_id: data.conversation_id,
+        message: currenAnswer,
+        by: "ai"
+      });
     } catch (err) {
       console.error(err, "err");
     } finally {
@@ -98,7 +96,7 @@ const Chat = () => {
     if (ref.current) {
       ref.current.scrollTop = ref.current.scrollHeight;
     }
-  }, [messages]);
+  }, [messages, answer]);
 
   return (
     <ContentLayout
@@ -119,10 +117,10 @@ const Chat = () => {
             {messages.map((message, index) => (
               <div
                 key={index}
-                className={`p-4  max-w-[80%]  rounded-lg  ${
+                className={`p-4  max-w-[80%]   rounded-lg  ${
                   message.by === "user"
                     ? "bg-primary text-primary-foreground  ml-auto rounded-br-none"
-                    : "bg-background text-muted-foreground mr-auto rounded-bl-none"
+                    : "bg-background text-muted-foreground  rounded-bl-none"
                 }
                   ${message.message === answer ? "hidden" : ""}
                 `}
@@ -131,10 +129,12 @@ const Chat = () => {
               </div>
             ))}
 
-            <div className="p-4 rounded-lg bg-background text-muted-foreground">
-              {answer}
-              {loading && "..."}
-            </div>
+            {answer && (
+              <div className="p-4  bg-background text-muted-foreground max-w-[80%] rounded-lg">
+                {answer}
+                {loading && "..."}
+              </div>
+            )}
           </div>
         ) : (
           <PrefilledPrompts sendPrompt={sendPrompt} />
