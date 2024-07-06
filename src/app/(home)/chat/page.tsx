@@ -67,15 +67,22 @@ const Chat = () => {
           break;
         }
         const decodedChunk = decoder.decode(value, { stream: true });
-        currenAnswer =
-          currenAnswer +
+        console.log(
           decodedChunk
             .replaceAll("data:", "")
             .replaceAll("[DONE]", "")
-            .replaceAll("Answer:", "")
-            .trim() +
-          " ";
-        setAnswer(currenAnswer);
+            .replaceAll("Answer:", "").length,
+          decodedChunk
+        );
+
+        if (
+          !decodedChunk.includes("[DONE]") &&
+          !decodedChunk.includes("Answer:")
+        ) {
+          //slice the first space
+          currenAnswer = currenAnswer + decodedChunk.replaceAll("data: ", "");
+          setAnswer(currenAnswer);
+        }
       }
       setMessages({
         conversation_id: data.conversation_id,

@@ -1,7 +1,5 @@
 import clsx from "clsx";
-import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const LatestCard = ({
   title,
@@ -30,7 +28,7 @@ const LatestCard = ({
         "bg-background rounded-2xl  break-inside-avoid  w-full p-4 flex flex-col gap-4 hover:shadow transition-all duration-200 ease-in-out"
       )}
     >
-      <div className="flex justify-between items-center">
+      <div className="flex justify-between flex-wrap gap-4 items-center">
         <div className="flex gap-2 items-center">
           <div className="bg-accent size-12 uppercase font-medium flex items-center justify-center rounded-full ">
             {author?.[0]}
@@ -50,8 +48,10 @@ const LatestCard = ({
         </div>
       </div>
       <div className="flex flex-col gap-2">
-        <h1 className="text-lg font-bold">{title}</h1>
-        <p className="text-sm line-clamp-[20]">{description}</p>
+        <h1 className="text-lg font-bold capitalize">
+          {title?.replaceAll("-", " ")}
+        </h1>
+        <p className="text-sm line-clamp-[12]">{description}</p>
       </div>
     </Link>
   );

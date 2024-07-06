@@ -44,7 +44,7 @@ export default function DashboardPage() {
         </TabsList>
         {tabs.map((tab, i) => (
           <TabsContent value={tab.title} key={i + tab.title}>
-            <div className="columns-1 md:columns-2 lg:columns-3 space-y-6 gap-6">
+            <div className="columns-1 md:columns-2 xl:columns-3 space-y-6 gap-6">
               {isLoading &&
                 new Array(6).fill(0).map((_, index) => (
                   <Skeleton
