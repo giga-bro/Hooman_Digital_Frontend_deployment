@@ -5,7 +5,7 @@ import Link from "next/link";
 export default function HomePage() {
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-accent ">
-      <header className="bg-white drop-shadow">
+      <header className="bg-background drop-shadow">
         <nav className="container flex justify-between  items-center w-full py-3  ">
           <Image width={100} height={40} src="/logo.svg" alt="Brand Logo" />
           <Button variant="default" className="rounded-full">
@@ -15,11 +15,11 @@ export default function HomePage() {
       </header>
       <main className="container  flex-1 pt-14 flex flex-col gap-5  ">
         <div className="flex gap-14 items-center">
-          <h1 className="text-6xl text-zinc-500 w-[70%]  font-bold leading-snug">
+          <h1 className="text-6xl text-accent-foreground w-[70%]  font-bold leading-snug">
             The All-in-One Governance and Statistical Answer Engine for DAOs
           </h1>
           <div className="flex flex-col gap-6 w-[30%]">
-            <h1 className=" text-zinc-500 text-lg   ">
+            <h1 className=" text-accent-foreground text-lg   ">
               AI-powered DAO management with activity summaries, instant
               reports, and interactive documentation. Effortlessly streamline
               operations and engage your community.

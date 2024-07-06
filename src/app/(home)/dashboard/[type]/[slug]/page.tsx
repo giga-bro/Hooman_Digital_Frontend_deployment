@@ -3,9 +3,8 @@ import { ContentLayout } from "@/components/admin-panel/content-layout";
 import { Separator } from "@/components/ui/separator";
 import { useLatest } from "@/services/queries";
 import { LatestItem, tagType } from "@/types/latest";
-import { ArrowLeft, ChevronLast, ChevronLeft } from "lucide-react";
+import { ChevronLeft } from "lucide-react";
 import Link from "next/link";
-import React from "react";
 
 const PostById = ({
   params
@@ -41,7 +40,9 @@ const PostById = ({
             </Link>
           </div>
 
-          <h1 className="text-xl font-bold">{result?.title}</h1>
+          <h1 className="text-xl font-bold capitalize">
+            {result?.title?.replaceAll("-", " ")}
+          </h1>
           <div className="aspect-[16/5] bg-accent rounded-lg" />
           <div className="flex flex-col gap-2 ">
             <h1 className=" font-bold">Summary</h1>
