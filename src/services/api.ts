@@ -1,7 +1,7 @@
 import { Latest } from "@/types/latest";
 import axios from "axios";
 
-export const BASE_URL = "http://kt6tp538gtb174i9i6hgb15rhs.ingress.tekti.net";
+export const BASE_URL = "https://llmgovserver.onrender.com";
 
 const axiosInstance = axios.create({ baseURL: BASE_URL });
 
