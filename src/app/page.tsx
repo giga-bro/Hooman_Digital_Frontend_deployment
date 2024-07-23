@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default function HomePage() {
-    efeijfiej
+    
   return (
     <div className="flex flex-col h-screen overflow-hidden bg-accent ">
       <header className="bg-background drop-shadow">
