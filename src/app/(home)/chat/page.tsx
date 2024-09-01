@@ -42,6 +42,7 @@ const Chat = () => {
     try {
       setLoading(true);
       setAnswer("");
+      setMessage("");
       let currenAnswer: string = "";
       const response = await fetch(`${BASE_URL}/chat`, {
         method: "post",
@@ -50,8 +51,10 @@ const Chat = () => {
           "Content-Type": "application/json" // indicates what the server actually sent
         },
         body: JSON.stringify({
-          conversation_id: Math.random().toString(36).substring(7),
-          message: prefilledMessage ?? message
+          // conversation_id: Math.random().toString(36).substring(7),
+          query: prefilledMessage ?? message,
+          current_date: new Date().toISOString(),
+          user_id: "1"
         })
       });
       if (!response.ok || !response.body) {
@@ -92,7 +95,6 @@ const Chat = () => {
     } catch (err) {
       console.error(err, "err");
     } finally {
-      setMessage("");
       setLoading(false);
     }
   };
@@ -154,8 +156,10 @@ const Chat = () => {
             value={message}
             type="text"
             placeholder="Ask DAOi "
-            className="w-full bg-transparent flex-1 focus:outline-none px-8  placeholder:text-muted-foreground"
+            className={`w-full bg-transparent flex-1 focus:outline-none px-8 placeholder:text-muted-foreground 
+              ${loading ? 'opacity-50 cursor-not-allowed' : 'opacity-100'}`}
             onKeyDown={sendPrompt}
+            disabled={loading}
           />
           <button
             disabled={loading}
