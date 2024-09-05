@@ -54,7 +54,7 @@ const Chat = () => {
           // conversation_id: Math.random().toString(36).substring(7),
           query: prefilledMessage ?? message,
           current_date: new Date().toISOString(),
-          user_id: "1"
+          user_id: "1" //harded code for now
         })
       });
       if (!response.ok || !response.body) {
